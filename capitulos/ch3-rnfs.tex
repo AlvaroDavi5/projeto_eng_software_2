@@ -4,8 +4,6 @@
 
 A Tabela~\ref{tabela-rnfs} apresenta a especificação dos requisitos não funcionais identificados no Documento de Especificação de Requisitos, os quais foram considerados condutores da arquitetura.
 
-\vitor{Esta seção deve descrever 3 a 5 requisitos não-funcionais escolhidos como condutores da arquitetura. O modelo traz 2 tabelas, uma com instruções e outra vazia, para mostrar como adicionar mais tabelas a esta seção. Adicionar quantas forem necessárias. Remover a marcação em amarelo (comando \textbackslash hl\{\} no \LaTeX). Como exemplo, vide documentos de projeto do Marvin e da Locadora de Carros do prof. Ricardo Falbo.}
-
 % Contador para IDs de Requisitos Não Funcionais.
 % Substitua rnf-definir-label dentro dos \label{} abaixo por IDs do seu projeto.
 \newcounter{rnfcount}
@@ -14,36 +12,121 @@ A Tabela~\ref{tabela-rnfs} apresenta a especificação dos requisitos não funci
 \setcounter{rnfcount}{0}
 
 \begin{footnotesize}
-\begin{longtable}{|r|p{13cm}|}
-	\caption{Especificação de Requisitos Não Funcionais.}
-	\label{tabela-rnfs}\\\hline
-	
-	% Início de tabela de requisito não-funcional.
-	\multicolumn{2}{|p{\dimexpr\linewidth-2\tabcolsep-2\arrayrulewidth}|}{\cellcolor{lightgray}\RNF\label{rnf-definir-label01} -- \hl{sentença descrevendo o RNF, conforme Documento de Especificação de Requisitos.}}\\\hline
-	
-	Categoria: & \hl{Possíveis valores: Interoperabilidade, Segurança, Usabilidade, Eficiência, Confiabilidade, Disponibilidade, Manutenibilidade, Portabilidade.} \\\hline
-	
-	\parbox[t]{2cm}{\raggedleft Tática /\\Tratamento:} & \hl{Apontar a tática a ser usada e algum detalhe, quando pertinente sobre como essa tática será aplicada no contexto do projeto.} \\\hline
-	
-	Medida: & \hl{Medida a ser usada para estabelecer objetivamente um critério de aceitação para o atendimento do RNF.} \\\hline
-	
-	\parbox[t]{2cm}{\raggedleft Critério de\\Aceitação:} & \hl{Descrição do critério de aceitação. Deve permitir avaliar objetivamente se o RNF foi satisfeito ou não.} \\\hline
+	\begin{longtable}{|r|p{13cm}|}
+		\caption{Especificação de Requisitos Não Funcionais.}
+		\label{tabela-rnfs}
+		\\\hline
 
-	
-	% Linha em branco.
-	\multicolumn{2}{c}{}\\\hline
+		% Requisito não funcional 1.
+		\multicolumn{2}{|p{\dimexpr\linewidth-2\tabcolsep-2\arrayrulewidth}|}{\cellcolor{lightgray}\RNF\label{RNF-01} -- O sistema deve controlar o acesso às funcionalidades através de login}
+		\\\hline
 
-	
-	% Início de tabela de requisito não-funcional.
-	\multicolumn{2}{|p{\dimexpr\linewidth-2\tabcolsep-2\arrayrulewidth}|}{\cellcolor{lightgray}\RNF\label{rnf-definir-label02} -- }\\\hline
-	
-	Categoria: &  \\\hline
-	
-	\parbox[t]{2cm}{\raggedleft Tática /\\Tratamento:} &  \\\hline
-	
-	Medida: &  \\\hline
-	
-	\parbox[t]{2cm}{\raggedleft Critério de\\Aceitação:} &  \\\hline
+		Categoria: & Segurança
+		\\\hline
 
-\end{longtable}
+		\parbox[t]{2cm}{\raggedleft Tática /
+		\\Tratamento:} & O sistema deve implementar autenticação por credenciais (login e senha) com criptografia de senhas no banco (hash, salt, variáveis de ambiente) e controle de sessão (token com dados de acesso). Cada usuário autenticado poderá acessar apenas suas próprias informações de compra. As sessões deverão expirar após período de inatividade definido (expiração de token). \\\hline
+
+		Medida:    & Percentual de tentativas de acesso não autorizado detectadas durante testes de penetração ou auditoria.
+		\\\hline
+
+		\parbox[t]{2cm}{\raggedleft Critério de
+		\\Aceitação:} & Nenhuma tentativa de acesso não autorizado deve ser bem-sucedida (0\%). O controle de acesso deve impedir completamente que um cliente tenha acesso ou altere dados de outro cliente. \\\hline
+
+		% Linha em branco.
+		\multicolumn{2}{c}{}
+		\\\hline
+
+
+		% Requisito não funcional 2.
+		\multicolumn{2}{|p{\dimexpr\linewidth-2\tabcolsep-2\arrayrulewidth}|}{\cellcolor{lightgray}\RNF\label{RNF-02} -- A interface do usuário deve ser intuitiva e amigável. O sistema deve permitir que os usuários escolham esquemas de cores alternativos que atendam melhor às suas capacidades visuais}
+		\\\hline
+
+		Categoria: & Usabilidade
+		\\\hline
+		%Aplicar padrões visuais consistentes e design responsivo
+		\parbox[t]{2cm}{\raggedleft Tática /
+		\\Tratamento:} & A interface do sistema deve ser intuitiva, evitando muitas opções espalhadas pela tela que possam confundir o usuário ou criar poluição visual.
+
+		As cores dos botões devem se relacionarem à ação a ser feita (verde para confirmar/salvar, vermelho para cancelar/deletar) e qualquer componente de ação (botão, seletor) deve se destacar do restante da interface.
+
+		Qualquer fluxo mais complexo deve possuir uma legenda explicativa ou um guia de uso.
+		\\\hline
+
+		Medida:    & Monitoramento dos cliques dos usuários em cada fluxo/funcionalidade da interface.
+
+		Monitoramento do tempo parado (interagindo com a interface, porém sem avançar para a próxima etapa) em cada fluxo/funcionalidade da interface.
+		\\\hline
+
+		\parbox[t]{2cm}{\raggedleft Critério de
+		\\Aceitação:} &  O usuário não deve ter mais de 10 cliques dentro de 30 segundos em uma área ou componente que não realiza nenhuma ação.
+
+		O usuário não deve ficar parado por mais de 2 minutos em uma etapa de um fluxo.
+		\\\hline
+
+		% Linha em branco.
+		\multicolumn{2}{c}{}
+		\\\hline
+
+
+		% Requisito não funcional 4.
+		\multicolumn{2}{|p{\dimexpr\linewidth-2\tabcolsep-2\arrayrulewidth}|}{\cellcolor{lightgray}\RNF\label{RNF-04} -- O sistema deve apresentar bom desempenho e tempo de resposta rápido}
+		\\\hline
+
+		Categoria: & Desempenho
+		\\\hline
+
+		\parbox[t]{2cm}{\raggedleft Tática /
+		\\Tratamento:} & O sistema deve ser otimizado para reduzir tempos de resposta e melhorar o desempenho das operações mais utilizadas. As consultas ao banco de dados devem ser revisadas e otimizadas, evitando buscas desnecessárias ou operações custosas. Devem ser implementados mecanismos de cache para dados acessados com frequência e técnicas de paginação ou carregamento sob demanda para grandes volumes de informação. Além disso, recomenda-se o monitoramento contínuo do consumo de recursos e do tempo de execução das funcionalidades críticas, a fim de identificar e corrigir gargalos.\\\hline
+
+		Medida:    & O desempenho será avaliado por meio de testes de carga e de estresse, monitorando o tempo médio de resposta das principais funcionalidades do sistema e a taxa de requisições processadas por segundo. Também será registrada a utilização média de CPU e memória durante os testes.
+		\\\hline
+
+		\parbox[t]{2cm}{\raggedleft Critério de
+		\\Aceitação:} &  O tempo médio de resposta das operações principais (consulta, cadastro e atualização) não deve exceder 2 segundos sob carga normal de uso e 5 segundos em situações de pico. O sistema deve suportar pelo menos 100 requisições simultâneas sem apresentar degradação significativa de desempenho ou indisponibilidade.\\\hline
+
+		% Linha em branco.
+		\multicolumn{2}{c}{}
+		\\\hline
+
+
+		% Requisito não funcional 5.
+		\multicolumn{2}{|p{\dimexpr\linewidth-2\tabcolsep-2\arrayrulewidth}|}{\cellcolor{lightgray}\RNF\label{RNF-05} -- O sistema deve ter compatibilidade com diferentes sistemas operacionais}
+		\\\hline
+		%Compatibilidade/Portabilidade
+		Categoria: & Compatibilidade
+		\\\hline
+
+		\parbox[t]{2cm}{\raggedleft Tática /
+		\\Tratamento:} & O sistema deve ser projetado de forma independente de plataforma, utilizando tecnologias multiplataforma que garantam execução em Windows, Linux e macOS. As dependências específicas de sistema operacional devem ser isoladas em módulos próprios, reduzindo o impacto de mudanças no ambiente. Devem ser utilizados padrões de empacotamento e execução padronizados, como containers Docker, para assegurar a compatibilidade e facilitar a implantação em diferentes contextos.\\\hline
+
+		Medida:    & A compatibilidade deve ser verificada por meio de testes de implantação e execução do sistema em cada sistema operacional-alvo, registrando-se eventuais falhas específicas de cada ambiente. Também devem ser contabilizadas as porcentagens de sucesso na instalação e execução, além de avaliar a cobertura dos testes de compatibilidade entre as plataformas previstas.
+		\\\hline
+
+		\parbox[t]{2cm}{\raggedleft Critério de
+		\\Aceitação:} & O sistema deve ser instalado e executado corretamente em todos os sistemas operacionais definidos como alvo (Windows 10 ou superior, Ubuntu LTS e macOS Monterey ou superior). O índice de falhas relacionadas a incompatibilidades de sistema operacional não deve ultrapassar 2\% das execuções durante os testes de homologação. \\\hline
+
+		% Linha em branco.
+		\multicolumn{2}{c}{}
+		\\\hline
+
+		% Requisito não funcional 6.
+		\multicolumn{2}{|p{\dimexpr\linewidth-2\tabcolsep-2\arrayrulewidth}|}{\cellcolor{lightgray}\RNF\label{RNF-06} --O código-fonte deve ser bem documentado para facilitar a manutenção futura e devem ser implementadas boas práticas de desenvolvimento de software para facilitar a extensibilidade }
+		\\\hline
+
+		Categoria: & Manutenibilidade
+		\\\hline
+
+		\parbox[t]{2cm}{\raggedleft Tática /
+		\\Tratamento:} &  O código deve ser estruturado de forma modular, com alta coesão e baixo acoplamento entre componentes, facilitando alterações e extensões futuras. Cada módulo deve conter documentação clara sobre sua função, entradas e saídas, bem como instruções de uso e integração. Devem ser adotadas convenções de codificação, padronização de nomenclaturas e padrões de projeto que favoreçam a reutilização e a testabilidade do sistema.\\\hline
+
+		Medida:    & A manutenibilidade será avaliada por meio da revisão de código (code review) e da análise de métricas de qualidade, como o grau de acoplamento entre módulos, a complexidade ciclomática e a cobertura de testes. Também será observada a porcentagem de classes e métodos documentados em relação ao total do código-fonte, bem como o tempo médio necessário para compreender e modificar uma funcionalidade existente durante atividades de manutenção. \\\hline
+
+		\parbox[t]{2cm}{\raggedleft Critério de
+		\\Aceitação:} & O código deve estar bem modularizado, com componentes coesos e fracamente acoplados, de modo que uma modificação em um módulo tenha impacto mínimo em outros módulo. Os módulos devem ser reutilizáveis, sem apresentar comportamentos inesperados. Os módulos de código devem ser possíveis de testar sem serem afetados por comportamentos de outros módulos.\\\hline
+
+		% Linha em branco.
+		\multicolumn{2}{c}{}
+		\\\hline
+	\end{longtable}
 \end{footnotesize}

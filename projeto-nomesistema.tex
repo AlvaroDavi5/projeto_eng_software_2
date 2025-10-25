@@ -111,8 +111,11 @@
 % Colorinlistoftodos package: to insert colored comments so authors can collaborate on the content.
 % (*) Indicar o nome do aluno e substituir o nome do professor se for o caso.
 \usepackage[colorinlistoftodos, textwidth=20mm, textsize=footnotesize]{todonotes}
-\newcommand{\aluno}[1]{\todo[author=\textbf{Aluno},color=green!30,caption={},inline]{#1}}
-\newcommand{\vitor}[1]{\todo[author=\textbf{Vítor},color=red!30,caption={},inline]{#1}}
+\newcommand{\vitor}[1]{\todo[author=\textbf{Vitor Souza},color=yellow!30,caption={},inline]{#1}}
+\newcommand{\alvaro}[1]{\todo[author=\textbf{Álvaro Alves},color=green!30,caption={},inline]{#1}}
+\newcommand{\gabriel}[1]{\todo[author=\textbf{Gabriel Lima},color=red!30,caption={},inline]{#1}}
+\newcommand{\mateus}[1]{\todo[author=\textbf{Mateus Loss},color=blue!30,caption={},inline]{#1}}
+\newcommand{\pedro}[1]{\todo[author=\textbf{Pedro Quedevez},color=orange!30,caption={},inline]{#1}}
 
 % Permite inserir espaço em branco condicional (incluído no texto final só se necessário) em macros.
 \usepackage{xspace}
@@ -174,7 +177,7 @@
 
 %%% Definição de variáveis. %%%
 % (*) Substituir os textos abaixo com as informações apropriadas.
-\titulo{Nome do Projeto}
+\titulo{Pet Shop}
 \local{Vitória, ES}
 \data{\the\year}
 \instituicao{
@@ -256,26 +259,28 @@
 
 % Inclui o brasão da UFES.
 \begin{figure}[h]
-  \centering
-  \includegraphics[scale=0.055]{brasao.jpg}
-  \label{ppts3}
-\end{figure} 
+	\centering
+	\includegraphics[scale=0.055]{brasao.jpg}
+	\label{ppts3}
+\end{figure}
 
 % Capa do trabalho.
 \imprimircapa
 
 
-		
+
 % (*) Incluir linhas no registro de alterações a cada nova versão.
 \begin{center}
 	{\large\bfseries Registro de Alterações:}
 
 	\vspace{0.5cm}
 	\begin{tabular}{|c|p{45mm}|c|p{60mm}|} \hline
-		
-		\textbf{Versão} & \textbf{Responsável} & \textbf{Data}  & \textbf{Alterações} \\ \hline   
-		
-		1.0  & Nome do Responsável & dd/MM/yyyy & Versão inicial. \\\hline 
+
+		\textbf{Versão} & \textbf{Responsável} & \textbf{Data} & \textbf{Alterações}                                                    \\ \hline
+
+		1.0             & Mateus Loss          & 19/10/2025    & Versão inicial.                                                        \\\hline
+		1.1             & Gabriel Lima         & 23/10/2025    & Especificação dos requisitos não funcionais (Cap. \ref{sec-rnfs}).     \\\hline
+		1.2             & Álvaro Alves         & 24/10/2025    & Especificação da plataforma e tecnologias (Cap. \ref{sec-plataforma}). \\\hline
 	\end{tabular}
 \end{center}
 \newpage
