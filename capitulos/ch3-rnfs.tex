@@ -79,7 +79,7 @@ A Tabela~\ref{tabela-rnfs} apresenta a especificação dos requisitos não funci
 		\parbox[t]{2cm}{\raggedleft Tática /
 		\\Tratamento:} & O sistema deve ser otimizado para reduzir tempos de resposta e melhorar o desempenho das operações mais utilizadas. As consultas ao banco de dados devem ser revisadas e otimizadas, evitando buscas desnecessárias ou operações custosas. Devem ser implementados mecanismos de cache para dados acessados com frequência e técnicas de paginação ou carregamento sob demanda para grandes volumes de informação. Além disso, recomenda-se o monitoramento contínuo do consumo de recursos e do tempo de execução das funcionalidades críticas, a fim de identificar e corrigir gargalos.\\\hline
 
-		Medida:    & O desempenho será avaliado por meio de testes de carga e de estresse, monitorando o tempo médio de resposta das principais funcionalidades do sistema e a taxa de requisições processadas por segundo. Também será registrada a utilização média de CPU e memória durante os testes.
+		Medida:    & O desempenho será avaliado por meio de testes de carga e de estresse, monitorando o tempo médio de resposta das principais funcionalidades do sistema e a taxa de requisições processadas por segundo. Os resultados do tempo de resposta de uma requisição ou query serão obtidos através das ferramentas de monitoramento DataDog e Sentry. Também será registrada a utilização média de CPU e memória durante os testes, utilizando os gráficos fornecidos pelo provedor de serviços em nuvem (AWS).
 		\\\hline
 
 		\parbox[t]{2cm}{\raggedleft Critério de
@@ -108,6 +108,7 @@ A Tabela~\ref{tabela-rnfs} apresenta a especificação dos requisitos não funci
 
 		% Linha em branco.
 		\multicolumn{2}{c}{}
+		\vitor{O que significa instalar? Não é uma aplicação Web?}
 		\\\hline
 
 		% Requisito não funcional 6.
@@ -120,13 +121,14 @@ A Tabela~\ref{tabela-rnfs} apresenta a especificação dos requisitos não funci
 		\parbox[t]{2cm}{\raggedleft Tática /
 		\\Tratamento:} &  O código deve ser estruturado de forma modular, com alta coesão e baixo acoplamento entre componentes, facilitando alterações e extensões futuras. Cada módulo deve conter documentação clara sobre sua função, entradas e saídas, bem como instruções de uso e integração. Devem ser adotadas convenções de codificação, padronização de nomenclaturas e padrões de projeto que favoreçam a reutilização e a testabilidade do sistema.\\\hline
 
-		Medida:    & A manutenibilidade será avaliada por meio da revisão de código (code review) e da análise de métricas de qualidade, como o grau de acoplamento entre módulos, a complexidade ciclomática e a cobertura de testes. Também será observada a porcentagem de classes e métodos documentados em relação ao total do código-fonte, bem como o tempo médio necessário para compreender e modificar uma funcionalidade existente durante atividades de manutenção. \\\hline
+		Medida:    & A manutenibilidade será avaliada por meio da revisão de código (code review) e da análise de métricas de qualidade, como o grau de acoplamento entre módulos, a complexidade ciclomática e a cobertura de testes. Também será observada a porcentagem de classes e métodos documentados em relação ao total do código-fonte, bem como o tempo médio necessário para compreender e modificar uma funcionalidade existente durante atividades de manutenção.                                              \\\hline
 
 		\parbox[t]{2cm}{\raggedleft Critério de
 		\\Aceitação:} & O código deve estar bem modularizado, com componentes coesos e fracamente acoplados, de modo que uma modificação em um módulo tenha impacto mínimo em outros módulo. Os módulos devem ser reutilizáveis, sem apresentar comportamentos inesperados. Os módulos de código devem ser possíveis de testar sem serem afetados por comportamentos de outros módulos.\\\hline
 
 		% Linha em branco.
 		\multicolumn{2}{c}{}
+		\vitor{Este critério de aceitação não está preciso. Os termos sublinhados são vagos, podem ser interpretados de muitas formas.}
 		\\\hline
 	\end{longtable}
 \end{footnotesize}
