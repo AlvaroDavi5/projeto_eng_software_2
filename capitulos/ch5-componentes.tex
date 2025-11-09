@@ -3,60 +3,30 @@
 \label{sec-componentes}
 \vspace{-1cm}
 
-Conforme mostrado na Figura~\ref{figura-arquitetura} ...
+Conforme mostrado na Figura~\ref{figura-arquitetura}, o sistema é separado em camadas e seus pacotes, cada pacote contém seus proprios componentes, que apenas se relacionam com componentes do mesmo pacote ou com componentes de outros pacotes através de interfaces bem definidas.
+A seguir, são apresentados os componentes de cada camada do sistema.
 
-\vitor{A partir da arquitetura da Figura~\ref{figura-arquitetura}, descrever no parágrafo acima os subsistemas e as camadas de cada subsistema que serão apresentadas, ajustando as subseções abaixo conforme necessário e preenchendo-as com modelos e explicações textuais. Como exemplo, vide documentos de projeto do Marvin (caso em que há apenas 1 subsistema) e da Locadora de Carros do prof. Ricardo Falbo (caso em que há mais de um subsistema, como prevê este template).}
+\section{Camada de Lógica de Negócio (CLN)}
+\label{sec-componentes-cln}
 
+Os componentes da Camada de Lógica de Negócio (CLN) são responsáveis por implementar as regras de negócio do sistema, realizando o processamento dos dados recebidos da camada de apresentação (CIU) e interagindo com a Camada de gerência de dados (CGD) para persistência e recuperação das informações necessárias.
 
-\section{Subsistema SS01}
-\label{sec-componentes-ss01}
+A CLN também contém dois pacotes principais, o pacote Domain e o pacote Application, e interage com a Camada de Domínio do Problema (CDP) através das classes do pacote Domain, para utilizar as entidades específicas do domínio e seus métodos e atributos.
 
-O subsistema SS01 ...
+\subsection{Pacote Application}
+\label{sec-componentes-cln-application}
 
-\vitor{Descrever o escopo do subsistema.}
-
-
-\subsection{Camada de Negócio}
-\label{sec-componentes-ss01-negocio}
-
-\vitor{Apresentar os modelos e descrever no texto.}
+O pacote Application é responsável por orquestrar as operações do sistema, coordenando a interação entre os componentes da CLN e a CGD. Ele contém os serviços que implementam as funcionalidades principais do sistema, utilizando as entidades do pacote Domain para realizar as operações de negócio.
 
 
-\subsection{Camada de Apresentação}
-\label{sec-componentes-ss01-apresentacao}
+\subsection{Pacote Domain}
+\label{sec-componentes-cln-domain}
 
-\vitor{Apresentar os modelos e descrever no texto.}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{figuras/diagrama-dominio.jpg}
+	\caption{Componentes de Domínio do Problema}
+	\label{figura-cln-domain}
+\end{figure}
 
-
-\subsection{Camada de Acesso a Dados}
-\label{sec-componentes-ss01-dados}
-
-\vitor{Apresentar os modelos e descrever no texto.}
-
-
-
-
-\section{Subsistema SS02}
-\label{sec-componentes-ss02}
-
-O subsistema SS02 ...
-
-\vitor{Descrever o escopo do subsistema.}
-
-
-\subsection{Camada de Negócio}
-\label{sec-componentes-ss02-negocio}
-
-\vitor{Apresentar os modelos e descrever no texto.}
-
-
-\subsection{Camada de Apresentação}
-\label{sec-componentes-ss02-apresentacao}
-
-\vitor{Apresentar os modelos e descrever no texto.}
-
-
-\subsection{Camada de Acesso a Dados}
-\label{sec-componentes-ss02-dados}
-
-\vitor{Apresentar os modelos e descrever no texto.}
+O pacote Domain contém as entidades do domínio do problema, representando os conceitos e objetos relevantes para o sistema. Cada entidade encapsula seus atributos e comportamentos (métodos), fornecendo uma interface clara para a manipulação dos dados relacionados ao domínio.

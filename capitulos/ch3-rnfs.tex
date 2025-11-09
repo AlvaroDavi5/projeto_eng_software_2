@@ -89,7 +89,6 @@ A Tabela~\ref{tabela-rnfs} apresenta a especificação dos requisitos não funci
 		\multicolumn{2}{c}{}
 		\\\hline
 
-
 		% Requisito não funcional 5.
 		\multicolumn{2}{|p{\dimexpr\linewidth-2\tabcolsep-2\arrayrulewidth}|}{\cellcolor{lightgray}\RNF\label{RNF-05} -- O sistema deve ter compatibilidade com diferentes sistemas operacionais}
 		\\\hline
@@ -98,17 +97,15 @@ A Tabela~\ref{tabela-rnfs} apresenta a especificação dos requisitos não funci
 		\\\hline
 
 		\parbox[t]{2cm}{\raggedleft Tática /
-		\\Tratamento:} & O sistema deve ser projetado de forma independente de plataforma, utilizando tecnologias multiplataforma que garantam execução em Windows, Linux e macOS. As dependências específicas de sistema operacional devem ser isoladas em módulos próprios, reduzindo o impacto de mudanças no ambiente. Devem ser utilizados padrões de empacotamento e execução padronizados, como containers Docker, para assegurar a compatibilidade e facilitar a implantação em diferentes contextos.\\\hline
+		\\Tratamento:} & A aplicação deve ser desenvolvida utilizando tecnologias web padrão (HTML5, CSS3, JavaScript) e frameworks modernos que garantam compatibilidade com os principais navegadores (Google Chrome, Mozilla Firefox, Microsoft Edge, Safari) em diferentes versões. Deve-se utilizar bibliotecas e ferramentas que facilitem a adaptação da interface para diferentes resoluções de tela e dispositivos.\\\hline
 
-		Medida:    & A compatibilidade deve ser verificada por meio de testes de implantação e execução do sistema em cada sistema operacional-alvo, registrando-se eventuais falhas específicas de cada ambiente. Também devem ser contabilizadas as porcentagens de sucesso na instalação e execução, além de avaliar a cobertura dos testes de compatibilidade entre as plataformas previstas.
-		\\\hline
+		Medida:    & A compatibilidade deve ser verificada por meio de testes de execução da aplicação em cada navegador-alvo, registrando-se eventuais falhas específicas de cada ambiente e versão através da ferramenta de detecção de erros Sentry.                                                                                                                                                                                                                                                                      \\\hline
 
 		\parbox[t]{2cm}{\raggedleft Critério de
-		\\Aceitação:} & O sistema deve ser instalado e executado corretamente em todos os sistemas operacionais definidos como alvo (Windows 10 ou superior, Ubuntu LTS e macOS Monterey ou superior). O índice de falhas relacionadas a incompatibilidades de sistema operacional não deve ultrapassar 2\% das execuções durante os testes de homologação. \\\hline
+		\\Aceitação:} & As ações do usuário nunca devem resultar em erros na interface da aplicação (front-end) devido imcompatibilidades dos frameworks e bibliotecas para diferentes navegadores e suas versões. Qualquer erro detectado deve ter origem apenas nas camadas inferiores, como na lógica de negócio (que se deve ficar no backend) ou no banco de dados. \\\hline
 
 		% Linha em branco.
 		\multicolumn{2}{c}{}
-		\vitor{O que significa instalar? Não é uma aplicação Web?}
 		\\\hline
 
 		% Requisito não funcional 6.
@@ -121,14 +118,15 @@ A Tabela~\ref{tabela-rnfs} apresenta a especificação dos requisitos não funci
 		\parbox[t]{2cm}{\raggedleft Tática /
 		\\Tratamento:} &  O código deve ser estruturado de forma modular, com alta coesão e baixo acoplamento entre componentes, facilitando alterações e extensões futuras. Cada módulo deve conter documentação clara sobre sua função, entradas e saídas, bem como instruções de uso e integração. Devem ser adotadas convenções de codificação, padronização de nomenclaturas e padrões de projeto que favoreçam a reutilização e a testabilidade do sistema.\\\hline
 
-		Medida:    & A manutenibilidade será avaliada por meio da revisão de código (code review) e da análise de métricas de qualidade, como o grau de acoplamento entre módulos, a complexidade ciclomática e a cobertura de testes. Também será observada a porcentagem de classes e métodos documentados em relação ao total do código-fonte, bem como o tempo médio necessário para compreender e modificar uma funcionalidade existente durante atividades de manutenção.                                              \\\hline
+		Medida:    & A manutenibilidade será avaliada por meio da revisão de código (code review), utilizando a ferramenta Sonarqube e da análise de métricas de qualidade, como o grau de acoplamento entre módulos, a complexidade e a cobertura de testes. Também será observada a porcentagem de classes e métodos documentados em relação ao total do código-fonte, bem como o tempo médio necessário para compreender e modificar uma funcionalidade existente durante atividades de manutenção.                       \\\hline
 
 		\parbox[t]{2cm}{\raggedleft Critério de
-		\\Aceitação:} & O código deve estar bem modularizado, com componentes coesos e fracamente acoplados, de modo que uma modificação em um módulo tenha impacto mínimo em outros módulo. Os módulos devem ser reutilizáveis, sem apresentar comportamentos inesperados. Os módulos de código devem ser possíveis de testar sem serem afetados por comportamentos de outros módulos.\\\hline
+		\\Aceitação:} & Cada módulo deve ter funções bem definidas e baixo acoplamento — alterações em um módulo não devem exigir mudanças em mais de um outro módulo.
+		O código será avaliado pelo Sonarqube, uma ferramenta que detecta a complexidade de funções e métodos, como também a clareza da nomeclatura
+		Uma modificação simples (como ajustar uma regra de negócio) deve poder ser compreendida e alterada em até 2 horas por outro desenvolvedor que não escreveu o código.                                                                                                                                                                                                                                                                                                                                                 \\\hline
 
 		% Linha em branco.
 		\multicolumn{2}{c}{}
-		\vitor{Este critério de aceitação não está preciso. Os termos sublinhados são vagos, podem ser interpretados de muitas formas.}
 		\\\hline
 	\end{longtable}
 \end{footnotesize}
