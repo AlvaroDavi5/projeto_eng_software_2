@@ -16,9 +16,13 @@ A CLN também contém dois pacotes principais, o pacote Domain e o pacote Applic
 \subsection{Pacote Application}
 \label{sec-componentes-cln-application}
 
-O pacote Application é responsável por orquestrar as operações do sistema, coordenando a interação entre os componentes da CLN e a CGD. Ele contém os serviços que implementam as funcionalidades principais do sistema, utilizando as entidades do pacote Domain para realizar as operações de negócio.
+O pacote Application é responsável por orquestrar as operações do sistema, coordenando a interação entre os componentes da CLN e a CGD. Ele contém os serviços que implementam as principais funcionalidades do sistema, utilizando as entidades do pacote Domain para realizar as operações de negócio.
 
+Nesta camada, concentram-se os fluxos de execução que envolvem múltiplas entidades, como o cadastro de clientes e animais, o agendamento de serviços e o registro de vendas. Os serviços do Application encapsulam regras de validação, controle transacional e tratamento de exceções, garantindo a consistência dos dados e a correta comunicação entre a interface do usuário e a camada de persistência.
 
+A modelagem foi feita de modo a manter os serviços coesos e independentes, permitindo que cada caso de uso seja tratado de forma isolada. Essa decisão favorece a manutenção, a testabilidade e a evolução do sistema, além de reduzir o acoplamento entre as camadas. Dessa forma, o pacote Application atua como um ponto central de coordenação da lógica de negócio, garantindo que as regras definidas no domínio sejam corretamente aplicadas e refletidas nas operações do sistema.
+
+\newpage
 \subsection{Pacote Domain}
 \label{sec-componentes-cln-domain}
 
@@ -29,6 +33,13 @@ O pacote Application é responsável por orquestrar as operações do sistema, c
 	\label{figura-cln-domain}
 \end{figure}
 
-O pacote Domain contém as entidades do domínio do problema, representando os conceitos e objetos relevantes para o sistema. Cada entidade encapsula seus atributos e comportamentos (métodos), fornecendo uma interface clara para a manipulação dos dados relacionados ao domínio.
+O pacote Domain contém as entidades que representam os conceitos e objetos centrais do sistema Pet Shop, refletindo diretamente o funcionamento do negócio. Cada entidade encapsula seus atributos e comportamentos (métodos), fornecendo uma interface clara para a manipulação e validação dos dados do domínio.
 
-\vitor{Registrar as principais decisões tomadas para se chegar a este modelo relativas a alterações estruturais do modelo, e.g., aquelas que levaram à criação de novas classes e associações.}
+Essa camada foi projetada para manter a coesão e a independência das regras do negócio em relação às demais camadas do sistema, garantindo que a lógica essencial permaneça concentrada nas próprias entidades. As relações entre elas foram definidas para representar de forma fiel as operações reais do pet shop, como o vínculo entre clientes e animais, o registro de agendamentos de serviços e a associação de vendas a produtos e funcionários.
+
+A modelagem também segue princípios de clareza e extensibilidade, permitindo que novas entidades e atributos possam ser incluídos futuramente sem impactar a estrutura existente. Assim, o pacote Domain atua como a base conceitual do sistema, assegurando consistência, reuso e alinhamento direto com os processos de negócio do pet shop.
+
+Para chegar ao modelo atual, foram feitas mudanças nos relacionamentos entre as entidades, a fim de garantir fluxos melhores definidos e o menor acoplamento possível entre as entidades, relacionando apenas as entidades que necessitavam de outras entidades para funcionarem corretamente. Além de melhorias nos nomes das entidades para facilitar a compreensão.
+
+i.ex.: Na primeira versão do domínio, a relação era entre \verb|BanhistaTosador| e \verb|Servico|, impedindo um funcionário do tipo \verb|Veterinario| de ser associado a um serviço.
+Outro exemplo, foi a entidade \verb|EstoqueProduto|, que deixou de ser uma entidade para se tornar o atributo "quantidadeEstoque" na entidade \verb|Produto|.
