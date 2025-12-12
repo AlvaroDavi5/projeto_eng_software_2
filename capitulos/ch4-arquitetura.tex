@@ -20,10 +20,14 @@ A arquitetura do sistema \emph{\imprimirtitulo} é baseada na Arquitetura em Cam
 As camadas da arquitetura de cada subsistema são definidas como:
 \begin{itemize}
 	\item \textbf{Camada de Interface com o Usuário (CIU):} Responsável pela comunicação entre o usuário e o sistema, incluindo telas (views) e controladores (controllers) de interação.
-	\item \textbf{Camada de Lógica de Negócio (CLN):} Implementa a lógica de aplicação e de domínio do problema, separando a lógica de tarefas (application) da lógica de domínio (CDP, domain) da aplicação.
-	\item \textbf{Camada de Domínio do Problema (CDP):} Contém as classes que representam os conceitos e regras do domínio do problema, nesse projeto, está contida dentro da CLN.
+	\item \textbf{Camada de Lógica de Negócio (CLN):} Implementa a lógica de aplicação seguindo o estilo arquitetônico de Camada de Serviços, separando a lógica da aplicação em subpacotes referentes à lógica do negócio (usecases, strategies, mappers).
+	\item \textbf{Camada de Domínio do Problema (CDP):} Contém as classes e enums que representam, respectivamente, as entidades e valores do domínio do problema, podendo ser utilizada pela CLN para manipular as entidades do domínio e pela CGD para mapear de entidades do domínio para entidades de modelo de banco de dados.
 	\item \textbf{Camada de Gerência de Dados (CGD):} Responsável pela persistência e recuperação de dados, seguindo o padrão Data Access Object (DAO).
 \end{itemize}
+
+\alvaro{Redesenhar arquitetura para separar CDP da CLN de forma à CDP não ser um componente da CLN, documentar mudança. Adicionar mais pacotes na Camada de Serviços (usecases, mappers, strategies), na CDP (enums, entities) e na CGD (models, repositories...)}
+\pedro{Explicação sobre Camada de Serviço na pág. 68 do arquivo "Notas de Aula Projeto Falbo".}
+
 A comunicação entre as camadas segue o padrão MVC, onde as páginas do front-end (CIU) chamam os adaptadores responsáveis pelas respostas via protocolo RESTful no back-end, acionando as classes controladoras (CIU), que interagem com as classes da camada de lógica de negócios (CLN) que, por sua vez, manipula as classes do domínio do problema (CDP) e se comunica com a camada de gerência de dados (CGD), a fim de persistir os registros da aplicação.
 
 \vspace{0.5cm}

@@ -33,6 +33,8 @@ A modelagem foi feita de modo a manter os serviços coesos e independentes, perm
 	\label{figura-cln-domain}
 \end{figure}
 
+\vitor{Por que os atributos são todos públicos? Nos requisitos as classes Animal e Agendamento possuem vários atributos que não aparecem mais aqui. Por que? Por que usar a antiga classe Date ao invés das novas classes LocalDate, LocalTime, etc.? Nos requisitos, Agendamento tem relação com Filial, Funcionario... Faltou representar os enums. As cardinalidades estão no lugar errado. Usar a sintaxe da UML. Faltou representar anavegabilidade entreas classes.}
+
 O pacote Domain contém as entidades que representam os conceitos e objetos centrais do sistema Pet Shop, refletindo diretamente o funcionamento do negócio. Cada entidade encapsula seus atributos e comportamentos (métodos), fornecendo uma interface clara para a manipulação e validação dos dados do domínio.
 
 Essa camada foi projetada para manter a coesão e a independência das regras do negócio em relação às demais camadas do sistema, garantindo que a lógica essencial permaneça concentrada nas próprias entidades. As relações entre elas foram definidas para representar de forma fiel as operações reais do pet shop, como o vínculo entre clientes e animais, o registro de agendamentos de serviços e a associação de vendas a produtos e funcionários.
@@ -43,3 +45,5 @@ Para chegar ao modelo atual, foram feitas mudanças nos relacionamentos entre as
 
 i.ex.: Na primeira versão do domínio, a relação era entre \verb|BanhistaTosador| e \verb|Servico|, impedindo um funcionário do tipo \verb|Veterinario| de ser associado a um serviço.
 Outro exemplo, foi a entidade \verb|EstoqueProduto|, que deixou de ser uma entidade para se tornar o atributo "quantidadeEstoque" na entidade \verb|Produto|.
+
+\vitor{Mas como você vai saber a quantidade em estoque de cada filial? Explicar também a inclusão da classe Usuario, que não existia.}
