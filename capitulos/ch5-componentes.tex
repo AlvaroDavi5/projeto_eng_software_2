@@ -22,7 +22,7 @@ Ele contém os serviços que implementam as principais funcionalidades do sistem
 Nesta camada, concentram-se os fluxos de execução que envolvem múltiplas entidades, como o cadastro de clientes e animais, o agendamento de serviços e o registro de vendas. Os serviços do Application encapsulam regras de validação, controle transacional e tratamento de exceções, garantindo a consistência dos dados e a correta comunicação entre a interface do usuário e a camada de persistência.
 
 A modelagem foi feita de modo a manter os serviços coesos e independentes, permitindo que cada caso de uso seja tratado de forma isolada. Essa decisão favorece a manutenção, a testabilidade e a evolução do sistema, além de reduzir o acoplamento entre as camadas. Dessa forma, o pacote Application atua como um ponto central de coordenação da lógica de negócio, garantindo que as regras definidas no domínio sejam corretamente aplicadas e refletidas nas operações do sistema.
-O pacote Application contém subpacotes relacionados à logica, como os pacotes de casos de uso (UseCases), de mapeamento (Mappers) e condicionais baseadas em regras de negócio (Strategies).
+O pacote Application segue o padrão de Camada de Serviço, nesse caso, uma subcamada. E contém subpacotes relacionados à logica, como os pacotes de casos de uso (UseCases), de mapeamento (Mappers) e condicionais baseadas em regras de negócio (Strategies).
 
 \newpage
 \section{Camada de Domínio do Problema (CDP)}
@@ -41,7 +41,7 @@ Essa camada atua como a base conceitual do sistema, fornecendo uma estrutura cla
 	\label{figura-cln-domain}
 \end{figure}
 
-\vitor{Por que os atributos são todos públicos? Nos requisitos as classes Animal e Agendamento possuem vários atributos que não aparecem mais aqui. Por que? Por que usar a antiga classe Date ao invés das novas classes LocalDate, LocalTime, etc.? Nos requisitos, Agendamento tem relação com Filial, Funcionario... Faltou representar os enums. As cardinalidades estão no lugar errado. Usar a sintaxe da UML. Faltou representar anavegabilidade entreas classes.}
+\vitor{Por que os atributos são todos públicos? Nos requisitos as classes Animal e Agendamento possuem vários atributos que não aparecem mais aqui. Por que? Nos requisitos, Agendamento tem relação com Filial, Funcionario... As cardinalidades estão no lugar errado. Usar a sintaxe da UML. Faltou representar a navegabilidade entre as classes.}
 
 O pacote Entities contém as entidades que representam os conceitos e objetos centrais do sistema Pet Shop, refletindo diretamente o funcionamento do negócio. Cada entidade encapsula seus atributos e comportamentos (métodos), fornecendo uma interface clara para a manipulação e validação dos dados do domínio.
 
