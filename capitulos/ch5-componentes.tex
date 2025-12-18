@@ -22,9 +22,7 @@ Ele contém os serviços que implementam as principais funcionalidades do sistem
 Nesta camada, concentram-se os fluxos de execução que envolvem múltiplas entidades, como o cadastro de clientes e animais, o agendamento de serviços e o registro de vendas. Os serviços do Application encapsulam regras de validação, controle transacional e tratamento de exceções, garantindo a consistência dos dados e a correta comunicação entre a interface do usuário e a camada de persistência.
 
 A modelagem foi feita de modo a manter os serviços coesos e independentes, permitindo que cada caso de uso seja tratado de forma isolada. Essa decisão favorece a manutenção, a testabilidade e a evolução do sistema, além de reduzir o acoplamento entre as camadas. Dessa forma, o pacote Application atua como um ponto central de coordenação da lógica de negócio, garantindo que as regras definidas no domínio sejam corretamente aplicadas e refletidas nas operações do sistema.
-O pacote Application segue o padrão de Camada de Serviço, nesse caso, uma subcamada. E contém subpacotes relacionados à logica, como os pacotes de casos de uso (UseCases), de mapeamento (Mappers) e condicionais baseadas em regras de negócio (Strategies).
-
-\alvaro{Colocar referência bibliográfica sobre Camada de Serviço.}
+O pacote Application segue o padrão de Camada de Serviço~\cite{buschmann2007service}, nesse caso, uma subcamada. E contém subpacotes relacionados à logica, como os pacotes de casos de uso (UseCases), de mapeamento (Mappers) e condicionais baseadas em regras de negócio (Strategies).
 
 \section{Camada de Domínio do Problema (CDP)}
 \label{sec-componentes-cdp}
