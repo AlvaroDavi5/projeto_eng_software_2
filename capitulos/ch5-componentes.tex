@@ -69,24 +69,30 @@ A Camada de Interface com o Usuário (CIU) é responsável por fornecer a intera
 
 Essa camada é composta por componentes que gerenciam a apresentação visual (views) e o controle de acionamento de fluxos através dos controllers, que por sua vez fazem a comunicação com a CLN através das Classes Gerenciadoras de Tarefas (CGTs) contidas no pacote Application (\ref{sec-componentes-cln-application}).
 
-\vitor{Adicionar imagens da IU (prints)}
+% \vitor{Adicionar imagens da IU (prints)}
 
 Com base na interface definida nos protótipos, a CIU foi projetada separando os componentes de interface (views) dos componentes de controle (controllers), que interagem com os componentes da CLN para realizar as operações solicitadas pelos usuários.
+A seguir, são representados os principais fluxos da CIU:
+
+% \begin{figure}[h]
+% 	\centering
+% 	\includegraphics[width=1\textwidth]{figuras/diagrama_ciu.png}
+% 	\caption{Camada de Interface com o Usuário (views e controllers) separada em subpacotes}
+% 	\label{figura-cius}
+% \end{figure}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=1\textwidth]{figuras/diagrama_ciu.png}
-	\caption{Camada de Interface com o Usuário (views e controllers) separada em subpacotes}
-	\label{figura-cius}
-\end{figure}
-
-Conforme a Figura~\ref{figura-cius}, cada subpacote da CIU pode ser representado por um fluxo. A seguir, são representados os principais fluxos da CIU:
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.8\textwidth,height=0.4\textheight]{figuras/ciu_cliente.png}
+	\includegraphics[width=0.7\textwidth,height=0.3\textheight]{figuras/ciu_cliente.png}
 	\caption{Fluxo de cadastro e gerenciamento de clientes}
 	\label{figura-ciu-cliente}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1.0\textwidth,height=0.5\textheight]{figuras/ciu_agendamentos_filiais.png}
+	\caption{Fluxo de cadastro e gerenciamento de agendamentos e filiais}
+	\label{figura-ciu-agendamentos-filiais}
 \end{figure}
 
 \newpage
