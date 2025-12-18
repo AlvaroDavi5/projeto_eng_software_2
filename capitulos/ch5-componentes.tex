@@ -24,7 +24,8 @@ Nesta camada, concentram-se os fluxos de execução que envolvem múltiplas enti
 A modelagem foi feita de modo a manter os serviços coesos e independentes, permitindo que cada caso de uso seja tratado de forma isolada. Essa decisão favorece a manutenção, a testabilidade e a evolução do sistema, além de reduzir o acoplamento entre as camadas. Dessa forma, o pacote Application atua como um ponto central de coordenação da lógica de negócio, garantindo que as regras definidas no domínio sejam corretamente aplicadas e refletidas nas operações do sistema.
 O pacote Application segue o padrão de Camada de Serviço, nesse caso, uma subcamada. E contém subpacotes relacionados à logica, como os pacotes de casos de uso (UseCases), de mapeamento (Mappers) e condicionais baseadas em regras de negócio (Strategies).
 
-\newpage
+\alvaro{Colocar referência bibliográfica sobre Camada de Serviço.}
+
 \section{Camada de Domínio do Problema (CDP)}
 \label{sec-componentes-cdp}
 
@@ -41,8 +42,6 @@ Essa camada atua como a base conceitual do sistema, fornecendo uma estrutura cla
 	\label{figura-cln-domain}
 \end{figure}
 
-\vitor{Por que os atributos são todos públicos? Nos requisitos as classes Animal e Agendamento possuem vários atributos que não aparecem mais aqui. Por que? Nos requisitos, Agendamento tem relação com Filial, Funcionario... As cardinalidades estão no lugar errado. Usar a sintaxe da UML. Faltou representar a navegabilidade entre as classes.}
-
 O pacote Entities contém as entidades que representam os conceitos e objetos centrais do sistema Pet Shop, refletindo diretamente o funcionamento do negócio. Cada entidade encapsula seus atributos e comportamentos (métodos), fornecendo uma interface clara para a manipulação e validação dos dados do domínio.
 
 Essa camada foi projetada para manter a coesão e a independência das regras do negócio em relação às demais camadas do sistema, garantindo que a lógica essencial permaneça concentrada nas próprias entidades. As relações entre elas foram definidas para representar de forma fiel as operações reais do pet shop, como o vínculo entre clientes e animais, o registro de agendamentos de serviços e a associação de vendas a produtos e funcionários.
@@ -51,11 +50,9 @@ A modelagem também segue princípios de clareza e extensibilidade, permitindo q
 
 Para chegar ao modelo atual, foram feitas mudanças nos relacionamentos entre as entidades, a fim de garantir fluxos melhores definidos e o menor acoplamento possível entre as entidades, relacionando apenas as entidades que necessitavam de outras entidades para funcionarem corretamente. Além de melhorias nos nomes das entidades para facilitar a compreensão.
 
-i.ex.: Na primeira versão do domínio, a relação era entre \verb|BanhistaTosador| e \verb|Servico|, impedindo um funcionário do tipo \verb|Veterinario| de ser associado a um serviço.
-Outro exemplo, foi a entidade \verb|EstoqueProduto|, que deixou de ser uma entidade para se tornar o atributo "quantidadeEstoque" na entidade \verb|Produto|.
-
-\vitor{Mas como você vai saber a quantidade em estoque de cada filial? Explicar também a inclusão da classe Usuario, que não existia.}
-\mateus{A gente não poderia remover essa classe Usuario?}
+\hl{i.ex.:} Na primeira versão do domínio, a relação era entre \verb|BanhistaTosador| e \verb|Servico|, impedindo um funcionário do tipo \verb|Veterinario| de ser associado a um serviço.
+Outro exemplo, foi a entidade \verb|EstoqueProduto|, que foi renomeada para \verb|EstoqueProdutoFilial|, para representar melhor a relação entre as filiais e os produtos, onde cada filial possui uma quantidade em estoque de cada produto.
+Além disso, as classes \verb|Pessoa| e \verb|Usuario| foram adicionadas como superclasses para as entidades \verb|Cliente| e \verb|Funcionario|, respectivamente, para evitar a duplicação de atributos comuns entre essas entidades.
 
 \subsection{Pacote Enums}
 \label{sec-componentes-cdp-enums}
@@ -64,3 +61,34 @@ O pacote Enums contém os tipos enumerados utilizados no sistema para representa
 Esses enums fornecem uma maneira clara e consistente de definir e utilizar valores predefinidos, facilitando a validação e a manipulação dos dados no contexto do domínio do pet shop.
 
 Os enums também podem representar os possíveis estados ou valores que serão utilizados pela CLN (\ref{sec-componentes-cln}) para implementar regras de negócio específicas.
+
+\newpage
+
+\section{Camada de Interface com o Usuário}
+\label{sec-ciu}
+
+A Camada de Interface com o Usuário (CIU) é responsável por fornecer a interação entre os usuários finais e o sistema, apresentando as informações de forma clara e intuitiva, além de capturar as ações e comandos dos usuários para serem processados pela lógica de negócio.
+
+Essa camada é composta por componentes que gerenciam a apresentação visual (views) e o controle de acionamento de fluxos através dos controllers, que por sua vez fazem a comunicação com a CLN através das Classes Gerenciadoras de Tarefas (CGTs) contidas no pacote Application (\ref{sec-componentes-cln-application}).
+
+\vitor{Adicionar imagens da IU (prints)}
+
+Com base na interface definida nos protótipos, a CIU foi projetada separando os componentes de interface (views) dos componentes de controle (controllers), que interagem com os componentes da CLN para realizar as operações solicitadas pelos usuários.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{figuras/diagrama_ciu.png}
+	\caption{Camada de Interface com o Usuário (views e controllers) separada em subpacotes}
+	\label{figura-cius}
+\end{figure}
+
+Conforme a Figura~\ref{figura-cius}, cada subpacote da CIU pode ser representado por um fluxo. A seguir, são representados os principais fluxos da CIU:
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth,height=0.4\textheight]{figuras/ciu_cliente.png}
+	\caption{Fluxo de cadastro e gerenciamento de clientes}
+	\label{figura-ciu-cliente}
+\end{figure}
+
+\newpage
